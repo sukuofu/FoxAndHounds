@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f183272568e6f94382e3b59c0de76cd, type: 3}
+  m_Name: Foxandhounds.project
+  m_EditorClassIdentifier: 
+  chapterDataList:
+  - chapterName: Boot
+    scenarioDir: {fileID: 102900000, guid: 5e4fd9c3c59552d42b55cf189a18b2b9, type: 3}
+    excelList: []
+  scenarios: {fileID: 11400000, guid: 69e2d7d5008f6c24c9b85df40dfa0862, type: 2}
+  enableCommentOutOnImport: 1
+  scenarioFileReaderSettings:
+  - {fileID: 11400000, guid: cf00bfdc52bf6e44a96163935dfd23b3, type: 2}
+  - {fileID: 11400000, guid: ab90fa29499da6d4da043a7a7d49601b, type: 2}
+  resourceDir: {fileID: 0}
+  checkExt: 0
+  customProjectSetting: {fileID: 11400000, guid: 2abf45b5061bf0c49a8c30e89e58afaa,
+    type: 2}
+  customImportSpriteFolders:
+  - {fileID: 102900000, guid: 26ec37c0402e23a4bb4a6adc73aadbb3, type: 3}
+  - {fileID: 102900000, guid: f3308f738548e164994445ff20197e6e, type: 3}
+  - {fileID: 102900000, guid: 94134ed1b3459f14da1841ada5efe169, type: 3}
+  - {fileID: 102900000, guid: cb480cb88c014d54e9f96e4e4e3aa78c, type: 3}
+  - {fileID: 102900000, guid: a20de72f533a10d439f70d23789d977c, type: 3}
+  customImportAudioFolders:
+  - {fileID: 102900000, guid: e1c8e59b6160a294cbf2c74f8dc07da2, type: 3}
+  - {fileID: 102900000, guid: c6fd78787b68fea4eb797ec070618671, type: 3}
+  - {fileID: 102900000, guid: e643be9323dbc044abada59395f28302, type: 3}
+  - {fileID: 102900000, guid: d83694cc910873d4c8e5c7ec3c5f1859, type: 3}
+  quickImportType: 0
+  parseFormula: 0
+  parseNumreic: 0
+  checkWhiteSpace: 1
+  checkWaitType: 0
+  checkWhiteSpaceEndOfCell: 1
+  checkTextCount: 1
+  checkTextCountAllLanguage: 0
+  autoImportType: 1
+  checkBlankRowCountOnImport: 1000
+  checkColumnCountOnImport: 500
