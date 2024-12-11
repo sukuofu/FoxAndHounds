@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 00000000000000008000000000000000
+LibraryAssetImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 9416
+  packageName: Visual Novel Toolkit Free
+  packageVersion: 1.004b
+  assetPath: ProjectSettings/DynamicsManager.asset
+  uploadId: 32757

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0000000000000000b000000000000000
+LibraryAssetImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 9416
+  packageName: Visual Novel Toolkit Free
+  packageVersion: 1.004b
+  assetPath: ProjectSettings/EditorBuildSettings.asset
+  uploadId: 32757
