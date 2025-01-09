@@ -8,6 +8,7 @@ public abstract class GameUnit : MonoBehaviour
 
     public bool IsDead => LifePoint <= 0;
 
+    [HideInInspector]
     public Room CurrentRoom;
 
     public virtual void GetDamaged(int damage)

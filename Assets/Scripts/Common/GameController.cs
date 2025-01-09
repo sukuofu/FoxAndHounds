@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [HideInInspector]
     public Player CurrentPlayer { get; private set; }
 
+    [HideInInspector]
     public List<Enemy> CurrentEnemies { get; private set; }
+
+    [HideInInspector]
+    public int CurrentStageIndex { get; set; } = 0;
 
     public bool HasEnemy => CurrentEnemies != null && 0 < CurrentEnemies.Count;
 
     public int EnemyActionCount { get; private set; } = 1;
 
     private Coroutine currentGameFlow;
-
-    public int CurrentStageIndex { get; set; } = 0;
 
     void Start()
     {
@@ -55,8 +58,6 @@ public class GameController : MonoBehaviour
 
     IEnumerator GenetateEnemies()
     {
-        // TODO: 敵の生成、変数に保持
-
         var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
         CurrentEnemies = enemies != null ? enemies.ToList() : null;
 
@@ -75,12 +76,10 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         StopCoroutine(currentGameFlow);
-
     }
 
     public void QuitGame()
     {
         StopCoroutine(currentGameFlow);
-
     }
 }

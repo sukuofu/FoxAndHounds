@@ -5,7 +5,18 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    public List<ArrowsToRoom> arrowsToRooms = new List<ArrowsToRoom>();
+    public List<Room> MovableRooms = new List<Room>();
+
+    private GameCanvas _gameCanvas;
+
+    private GameCanvas gameCanvas
+    {
+        get
+        {
+            if (!_gameCanvas) _gameCanvas = GameObject.FindAnyObjectByType<GameCanvas>();
+            return _gameCanvas;
+        }
+    }
 
     public bool HasPlayer
     {
