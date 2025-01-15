@@ -5,7 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    public List<Room> MovableRooms = new List<Room>();
+    public List<Room> MovableRooms;
 
     private GameCanvas _gameCanvas;
 
@@ -36,11 +36,20 @@ public class Room : MonoBehaviour
     }
 
     [HideInInspector]
-    public List<GameUnit> CurrentGameUnits = new List<GameUnit>();
+    public List<GameUnit> CurrentGameUnits;
+
+    [SerializeField]
+    public bool IsStart;
+
+    [SerializeField]
+    public bool IsGoal;
 
     public void DisplayArrowsToRoom()
     {
-
+        foreach (var moveTarget in MovableRooms)
+        {
+            var arrow = gameCanvas;
+        }
     }
 
     public Room GetEntered(GameUnit gameUnit)

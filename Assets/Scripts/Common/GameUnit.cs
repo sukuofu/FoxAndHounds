@@ -22,4 +22,9 @@ public abstract class GameUnit : MonoBehaviour
 
     public abstract void MoveToRoom(Room room);
 
+    public void ForceSetRoom(Room room)
+    {
+        CurrentRoom = room;
+        transform.position = room.transform.position;
+    }
 }

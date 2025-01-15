@@ -6,12 +6,6 @@ using UnityEngine;
 public class Player : GameUnit
 {
     private Action currentAction = null;
-
-    public Player(int lifePoint)
-    {
-        LifePoint = lifePoint;
-    }
-
     public override IEnumerator DoAction()
     {
         while (currentAction == null)
@@ -21,6 +15,11 @@ public class Player : GameUnit
         }
         currentAction.Invoke();
         currentAction = null;
+    }
+
+    public void SetLifePoint(int lifePoint)
+    {
+        LifePoint = lifePoint;
     }
 
     public override void ChooseRoom(Room room)

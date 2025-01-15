@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
     public Player CurrentPlayer { get; private set; }
 
     [HideInInspector]
+    public GameCanvas CurrentGameCanvas { get; private set; }
+
+    [HideInInspector]
     public List<Enemy> CurrentEnemies { get; private set; }
 
     [HideInInspector]
@@ -27,15 +30,17 @@ public class GameController : MonoBehaviour
 
     IEnumerator GameFlow()
     {
-        yield return LoadStage();
         yield return GenetatePlayer();
-        yield return GenetateEnemies();
-
+        yield return GenetateGameCanvas();
+        yield return LoadStage();
+        //yield return GenetateEnemies();
         while (!CurrentPlayer.IsDead)
         {
+            yield return CurrentGameCanvas.ShowYourTurn();
             yield return CurrentPlayer.DoAction();
             if (HasEnemy)
             {
+                yield return CurrentGameCanvas.ShowEnemyTurn();
                 yield return GetRandomEnemy().DoAction();
             }
 
@@ -46,13 +51,40 @@ public class GameController : MonoBehaviour
 
     IEnumerator LoadStage()
     {
-        GameObject prefabFromResources = Resources.Load("Prefabs/Prefab1") as GameObject;
+        var rooms = Resources.Load("Prefabs/Rooms_Level_1") as GameObject;
+        Instantiate(rooms, new Vector3(0, 0, 0), Quaternion.identity);
+
+        var children = rooms.GetComponentsInChildren<Room>();
+
+        if (children != null)
+        {
+            foreach (var child in children)
+            {
+                if (child.IsStart)
+                {
+                    CurrentPlayer.ForceSetRoom(child);
+                    break;
+                }
+            }
+        }
+
         yield return null;
     }
 
     IEnumerator GenetatePlayer()
     {
-        CurrentPlayer = FindAnyObjectByType<Player>();
+        var player = Resources.Load("Prefabs/Player") as GameObject;
+        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        CurrentPlayer = player.GetComponent<Player>();
+        CurrentPlayer.SetLifePoint(5);
+        yield return null;
+    }
+
+    IEnumerator GenetateGameCanvas()
+    {
+        var gameCanvas = Resources.Load("Prefabs/GameCanvas") as GameObject;
+        Instantiate(gameCanvas, new Vector3(0, 0, 0), Quaternion.identity);
+        CurrentGameCanvas = gameCanvas.GetComponent<GameCanvas>();
         yield return null;
     }
 
