@@ -1371,15 +1371,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.33316466
+    x: 0.00018058153
     y: 0
-    width: 0.33367068
+    width: 0.99963886
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.1
+  orthographic size: 4.5
   m_Depth: 5
   m_CullingMask:
     serializedVersion: 2
@@ -1408,8 +1408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelsToUnits: 100
-  width: 1080
-  height: 1820
+  width: 1600
+  height: 900
   isFlexible: 0
   maxWidth: 1080
   maxHeight: 1820
@@ -2709,7 +2709,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6079,8 +6079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c85d0f3659da44fa67548835a43c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWindowWidth: 1080
-  defaultWindowHeight: 1820
+  defaultWindowWidth: 1600
+  defaultWindowHeight: 900
 --- !u!1 &1386148552
 GameObject:
   m_ObjectHideFlags: 0
@@ -6746,8 +6746,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pixelsToUnits: 100
-  width: 1080
-  height: 1820
+  width: 1600
+  height: 900
   isFlexible: 0
   maxWidth: 1080
   maxHeight: 1820
@@ -6792,15 +6792,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.33316466
+    x: 0.00018058153
     y: 0
-    width: 0.33367068
+    width: 0.99963886
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.1
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
