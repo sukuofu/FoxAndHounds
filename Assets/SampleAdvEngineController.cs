@@ -16,6 +16,11 @@ public class SampleAdvEngineController : MonoBehaviour
 
     float defaultSpeed = -1;
 
+    void Start()
+    {
+        JumpScenario("立花満月");
+    }
+
     //指定のラベルのシナリオを再生する
     public void JumpScenario(string label)
     {
