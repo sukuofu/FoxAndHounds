@@ -18,7 +18,7 @@ public class SampleAdvEngineController : MonoBehaviour
 
     void Start()
     {
-        JumpScenario("立花満月");
+        JumpScenario("鉢谷雲雀");
     }
 
     //指定のラベルのシナリオを再生する
