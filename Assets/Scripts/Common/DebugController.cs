@@ -23,4 +23,9 @@ public class DebugController : MonoBehaviour
         //けっこう重い処理なので、別に管理するのも手
         yield return Resources.UnloadUnusedAssets();
     }
+
+    public void WriteLog()
+    {
+        Debug.Log("ログ出力");
+    }
 }
