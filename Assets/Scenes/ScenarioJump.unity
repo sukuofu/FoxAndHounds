@@ -1414,6 +1414,7 @@ GameObject:
   - component: {fileID: 456724016}
   - component: {fileID: 456724014}
   - component: {fileID: 456724018}
+  - component: {fileID: 456724019}
   m_Layer: 8
   m_Name: AdvEngine
   m_TagString: Untagged
@@ -1857,6 +1858,18 @@ MonoBehaviour:
   onChangedFloatParamEvents: []
   onChangedIntParamEvents: []
   onChangedStringParamEvents: []
+--- !u!114 &456724019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456724000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb85faef0ec11d489266c975bd9c8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546995296
 GameObject:
   m_ObjectHideFlags: 0
