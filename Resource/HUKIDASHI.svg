@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2800"
+   height="500"
+   viewBox="0 0 740.83328 132.29167"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="HUKIDASHI.svg"
+   inkscape:export-filename="Documents\GitHub\FoxAndHounds\Assets\Resources\Texture\HUKIDASHI.png"
+   inkscape:export-xdpi="103.43679"
+   inkscape:export-ydpi="103.43679"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.21792307"
+     inkscape:cx="1057.7127"
+     inkscape:cy="539.18109"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g2" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1"
+       transform="matrix(1.2426065,0,0,0.32552122,-52.118322,-2.9668582)">
+      <g
+         id="g2"
+         transform="matrix(0.82286634,0,0,1.1716241,35.618778,-7.6476353)">
+        <g
+           id="g3"
+           transform="matrix(1.1800392,0,0,1.1982964,-4.0270121,-49.764248)">
+          <rect
+             style="fill:#ffcb00;fill-opacity:1;stroke-width:6.60925"
+             id="rect2"
+             width="606.10022"
+             height="265.75711"
+             x="13.208703"
+             y="82.033386"
+             ry="0"
+             transform="matrix(0.99926632,-0.03829898,0.0041574,0.99999136,0,0)" />
+          <rect
+             style="fill:#ff0000;fill-opacity:1;stroke-width:6.43835"
+             id="rect1"
+             width="600.30676"
+             height="254.62482"
+             x="19.654131"
+             y="64.284721"
+             ry="0"
+             transform="matrix(0.99947711,0.03233433,-0.0043329,0.99999061,0,0)" />
+          <rect
+             style="fill:#4ecb00;fill-opacity:1;stroke-width:6.16928"
+             id="rect3"
+             width="588.83502"
+             height="238.34242"
+             x="21.896591"
+             y="90.630455"
+             ry="0"
+             transform="matrix(0.9997549,-0.02213892,0.00325859,0.99999469,0,0)" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
