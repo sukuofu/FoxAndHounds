@@ -9,9 +9,9 @@ public class GameCanvas : MonoBehaviour
     GameObject arrowPrefabs;
 
     [SerializeField]
-    Animator yourTurnPanel;
+    RectTransform yourTurnPanel;
     [SerializeField]
-    Animator enemyTurnPanel;
+    RectTransform enemyTurnPanel;
 
     public void ShowDialog()
     {
@@ -25,17 +25,15 @@ public class GameCanvas : MonoBehaviour
 
     public IEnumerator ShowYourTurn()
     {
-        yourTurnPanel.transform.parent.gameObject.SetActive(true);
-        yield return new WaitForEndOfFrame();
-        yield return new WaitUntil(() => yourTurnPanel.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
         yourTurnPanel.transform.parent.gameObject.SetActive(false);
+        yourTurnPanel.transform.parent.gameObject.SetActive(true);
+        yield return null;
     }
 
     public IEnumerator ShowEnemyTurn()
     {
+        yourTurnPanel.transform.parent.gameObject.SetActive(false);
         enemyTurnPanel.transform.parent.gameObject.SetActive(true);
-        yield return new WaitForEndOfFrame();
-        yield return new WaitUntil(() => enemyTurnPanel.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
-        enemyTurnPanel.transform.parent.gameObject.SetActive(false);
+        yield return null;
     }
 }
