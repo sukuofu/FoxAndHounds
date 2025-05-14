@@ -481,7 +481,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1166,6 +1166,32 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3672342677874441807, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672342677874441807, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672342677874441807, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e0ffe7e161335e749b3a2d5fabb1e489,
+        type: 3}
+    - target: {fileID: 3672342677874441807, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672342677874441807, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4147637546770123422, guid: 99e796ea105170c46a2cad068d7c7091,
         type: 3}
       propertyPath: m_Name
@@ -1173,8 +1199,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7531275625597246949, guid: 99e796ea105170c46a2cad068d7c7091,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531275625597246949, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531275625597246949, guid: 99e796ea105170c46a2cad068d7c7091,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7531275625597246949, guid: 99e796ea105170c46a2cad068d7c7091,
         type: 3}

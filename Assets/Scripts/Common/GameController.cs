@@ -51,22 +51,22 @@ public class GameController : MonoBehaviour
 
     IEnumerator LoadStage()
     {
-        var rooms = Resources.Load("Prefabs/Rooms_Level_1") as GameObject;
-        Instantiate(rooms, new Vector3(0, 0, 0), Quaternion.identity);
+        // var rooms = Resources.Load("Prefabs/Rooms_Level_1") as GameObject;
+        // Instantiate(rooms, new Vector3(0, 0, 0), Quaternion.identity);
 
-        var children = rooms.GetComponentsInChildren<Room>();
+        // var children = rooms.GetComponentsInChildren<Room>();
 
-        if (children != null)
-        {
-            foreach (var child in children)
-            {
-                if (child.IsStart)
-                {
-                    CurrentPlayer.ForceSetRoom(child);
-                    break;
-                }
-            }
-        }
+        // if (children != null)
+        // {
+        //     foreach (var child in children)
+        //     {
+        //         if (child.IsStart)
+        //         {
+        //             CurrentPlayer.ForceSetRoom(child);
+        //             break;
+        //         }
+        //     }
+        // }
 
         yield return null;
     }
