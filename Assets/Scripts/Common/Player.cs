@@ -22,14 +22,14 @@ public class Player : GameUnit
         LifePoint = lifePoint;
     }
 
-    public override void ChooseRoom(Room room)
+    public override void ChooseRoom(Room.RoomSymbol roomSymbol)
     {
-        CurrentRoom = room;
-        currentAction = () => MoveToRoom(room);
+        CurrentRoomSymbol = roomSymbol;
+        currentAction = () => MoveToRoom(roomSymbol);
     }
 
-    public override void MoveToRoom(Room room)
+    public override void MoveToRoom(Room.RoomSymbol roomSymbol)
     {
-
+        CurrentRoomSymbol = roomSymbol;
     }
 }

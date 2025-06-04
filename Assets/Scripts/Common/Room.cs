@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Room : MonoBehaviour
 {
@@ -10,7 +11,24 @@ public class Room : MonoBehaviour
     /// </summary>
     public enum RoomSymbol
     {
-        A, B, C, D, E, F, G, H, I, J, K
+        A, B, C, D, E, F, G, H, I, J, K, None
+    }
+
+    [HideInInspector]
+    public RoomSymbol myRoomSymbol { get; private set; }
+
+    private void Awake()
+    {
+        SetRoomSymbolFromName();
+    }
+
+    private void SetRoomSymbolFromName()
+    {
+        var myName = gameObject.name;
+        if (Enum.TryParse(myName, out RoomSymbol parsedSymbol))
+        {
+            myRoomSymbol = parsedSymbol;
+        }
     }
 
     /// <summary>
@@ -19,7 +37,7 @@ public class Room : MonoBehaviour
     /// <param name="myRoom"></param>
     /// <param name="gameUnit"></param>
     /// <returns></returns>
-    public List<RoomSymbol> GetMovableRoomsByMyRoom(RoomSymbol myRoom, GameUnit gameUnit)
+    public static List<RoomSymbol> GetMovableRoomsByMyRoom(RoomSymbol myRoom, GameUnit gameUnit)
     {
         var result = new List<RoomSymbol>();
         // プレイヤーかどうかで、右に進めるか判断

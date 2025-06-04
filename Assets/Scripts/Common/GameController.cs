@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
 
     public int EnemyActionCount { get; private set; } = 1;
 
+    private int turnCount { get; set; } = 0;
+
     private Coroutine currentGameFlow;
 
     void Start()
@@ -37,13 +39,20 @@ public class GameController : MonoBehaviour
         while (!CurrentPlayer.IsDead)
         {
             yield return CurrentGameCanvas.ShowYourTurn();
+            var preRoom = CurrentPlayer.CurrentRoomSymbol;
             yield return CurrentPlayer.DoAction();
+            // 部屋移動していたら
+            if (preRoom != CurrentPlayer.CurrentRoomSymbol)
+            {
+                RoomChange();
+            }
+
             if (HasEnemy)
             {
                 yield return CurrentGameCanvas.ShowEnemyTurn();
                 yield return GetRandomEnemy().DoAction();
             }
-
+            turnCount += 1;
             yield return null;
         }
         GameOver();
@@ -103,6 +112,14 @@ public class GameController : MonoBehaviour
             return CurrentEnemies[Random.Range(0, CurrentEnemies.Count)];
         }
         return null;
+    }
+
+    /// <summary>
+    /// 部屋を移動するときの演出
+    /// </summary>
+    private void RoomChange()
+    {
+
     }
 
     public void GameOver()

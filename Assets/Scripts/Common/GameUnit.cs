@@ -9,7 +9,7 @@ public abstract class GameUnit : MonoBehaviour
     public bool IsDead => LifePoint <= 0;
 
     [HideInInspector]
-    public Room CurrentRoom;
+    public Room.RoomSymbol CurrentRoomSymbol;
 
     public virtual void GetDamaged(int damage)
     {
@@ -18,13 +18,7 @@ public abstract class GameUnit : MonoBehaviour
 
     public abstract IEnumerator DoAction();
 
-    public abstract void ChooseRoom(Room room);
+    public abstract void ChooseRoom(Room.RoomSymbol roomSymbol);
 
-    public abstract void MoveToRoom(Room room);
-
-    public void ForceSetRoom(Room room)
-    {
-        CurrentRoom = room;
-        transform.position = room.transform.position;
-    }
+    public abstract void MoveToRoom(Room.RoomSymbol roomSymbol);
 }
