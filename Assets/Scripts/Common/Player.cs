@@ -6,6 +6,13 @@ using UnityEngine;
 public class Player : GameUnit
 {
     private Action currentAction = null;
+
+    public void Initialize(int lifePoint, Room.RoomSymbol roomSymbol)
+    {
+        LifePoint = lifePoint;
+        CurrentRoomSymbol = roomSymbol;
+    }
+
     public override IEnumerator DoAction()
     {
         while (currentAction == null)

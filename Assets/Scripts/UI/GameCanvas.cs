@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -25,15 +26,13 @@ public class GameCanvas : MonoBehaviour
 
     public IEnumerator ShowYourTurn()
     {
-        yourTurnPanel.transform.parent.gameObject.SetActive(false);
-        yourTurnPanel.transform.parent.gameObject.SetActive(true);
+        yourTurnPanel.transform.gameObject.SetActive(true);
         yield return null;
     }
 
     public IEnumerator ShowEnemyTurn()
     {
-        yourTurnPanel.transform.parent.gameObject.SetActive(false);
-        enemyTurnPanel.transform.parent.gameObject.SetActive(true);
+        enemyTurnPanel.transform.gameObject.SetActive(true);
         yield return null;
     }
 }

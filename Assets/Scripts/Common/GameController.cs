@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,7 +86,8 @@ public class GameController : MonoBehaviour
         var player = Resources.Load("Prefabs/Player") as GameObject;
         Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
         CurrentPlayer = player.GetComponent<Player>();
-        CurrentPlayer.SetLifePoint(5);
+
+        CurrentPlayer.Initialize(5, Room.RoomSymbol.D); // デバッグ用
         yield return null;
     }
 
@@ -109,7 +111,7 @@ public class GameController : MonoBehaviour
     {
         if (HasEnemy)
         {
-            return CurrentEnemies[Random.Range(0, CurrentEnemies.Count)];
+            return CurrentEnemies[UnityEngine.Random.Range(0, CurrentEnemies.Count)];
         }
         return null;
     }
