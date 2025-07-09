@@ -9,9 +9,11 @@ public class Map : MonoBehaviour
     [HideInInspector]
     public List<Room> CurrentRooms { get; private set; }
 
-    public Room.RoomSymbol StartRoomSymbol { get; set; }
+    [SerializeField]
+    public Room.RoomSymbol StartRoomSymbol;
 
-    public Room.RoomSymbol EndRoomSymbol { get; set; }
+    [SerializeField]
+    public Room.RoomSymbol EndRoomSymbol;
 
     void Awake()
     {

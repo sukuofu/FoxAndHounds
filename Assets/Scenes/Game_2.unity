@@ -944,7 +944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb197ac2a4819545a17bafac00ed185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSymbol: 0
 --- !u!1 &1100902540
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,11 @@ public class Player : GameUnit
 {
     private Action currentAction = null;
 
+    public void SetCurrentAction(Action action)
+    {
+        currentAction = action;
+    }
+
     public void Initialize(int lifePoint, Room.RoomSymbol roomSymbol)
     {
         LifePoint = lifePoint;
