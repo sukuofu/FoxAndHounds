@@ -5,14 +5,6 @@ using System;
 
 public class Room : MonoBehaviour
 {
-    /// <summary>
-    /// 部屋の記号
-    /// 参考: https://traio.hatenablog.com/entry/2020/06/11/143656
-    /// </summary>
-    public enum RoomSymbol
-    {
-        A, B, C, D, E, F, G, H, I, J, K, None
-    }
 
     [HideInInspector]
     public RoomSymbol myRoomSymbol { get; private set; }

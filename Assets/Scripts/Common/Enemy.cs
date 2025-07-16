@@ -9,12 +9,12 @@ public class Enemy : GameUnit
         yield return new WaitForEndOfFrame();
     }
 
-    public override void ChooseRoom(Room.RoomSymbol room)
+    public override void ChooseRoom(RoomSymbol room)
     {
 
     }
 
-    public override void MoveToRoom(Room.RoomSymbol room)
+    public override void MoveToRoom(RoomSymbol room)
     {
 
     }

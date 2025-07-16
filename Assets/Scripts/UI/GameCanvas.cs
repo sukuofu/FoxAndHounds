@@ -16,12 +16,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     RectTransform enemyTurnPanel;
 
-    void Awake()
-    {
-        var player = GameObject.FindAnyObjectByType<Player>();
-        Action action = (() => player.MoveToRoom(Room.RoomSymbol.B));
-        arrowPrefabs.GetComponent<Button>().onClick.AddListener(() => Debug.Log("???"));
-    }
+    public Player player { private get; set; }
 
     public void ShowDialog()
     {
@@ -45,4 +40,8 @@ public class GameCanvas : MonoBehaviour
         yield return null;
     }
 
+    public void SendPlayerToMoveRoom(RoomSymbol roomSymbol)
+    {
+        player.SetCurrentAction(() => player.MoveToRoom(roomSymbol));
+    }
 }

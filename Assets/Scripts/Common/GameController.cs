@@ -84,18 +84,19 @@ public class GameController : MonoBehaviour
     IEnumerator GenetatePlayer()
     {
         var player = Resources.Load("Prefabs/Player") as GameObject;
-        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
-        CurrentPlayer = player.GetComponent<Player>();
+        var playerInstance = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        CurrentPlayer = playerInstance.GetComponent<Player>();
 
-        CurrentPlayer.Initialize(5, Room.RoomSymbol.D); // デバッグ用
+        CurrentPlayer.Initialize(5, RoomSymbol.D); // デバッグ用
         yield return null;
     }
 
     IEnumerator GenetateGameCanvas()
     {
         var gameCanvas = Resources.Load("Prefabs/GameCanvas") as GameObject;
-        Instantiate(gameCanvas, new Vector3(0, 0, 0), Quaternion.identity);
-        CurrentGameCanvas = gameCanvas.GetComponent<GameCanvas>();
+        var gameCanvasInsetance = Instantiate(gameCanvas, new Vector3(0, 0, 0), Quaternion.identity);
+        CurrentGameCanvas = gameCanvasInsetance.GetComponent<GameCanvas>();
+        CurrentGameCanvas.player = CurrentPlayer;
         yield return null;
     }
 
@@ -121,7 +122,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void RoomChange()
     {
-
+        Debug.Log("部屋変わったよ");
     }
 
     public void GameOver()

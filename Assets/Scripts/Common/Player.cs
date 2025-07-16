@@ -12,7 +12,7 @@ public class Player : GameUnit
         currentAction = action;
     }
 
-    public void Initialize(int lifePoint, Room.RoomSymbol roomSymbol)
+    public void Initialize(int lifePoint, RoomSymbol roomSymbol)
     {
         LifePoint = lifePoint;
         CurrentRoomSymbol = roomSymbol;
@@ -34,13 +34,13 @@ public class Player : GameUnit
         LifePoint = lifePoint;
     }
 
-    public override void ChooseRoom(Room.RoomSymbol roomSymbol)
+    public override void ChooseRoom(RoomSymbol roomSymbol)
     {
         CurrentRoomSymbol = roomSymbol;
         currentAction = () => MoveToRoom(roomSymbol);
     }
 
-    public override void MoveToRoom(Room.RoomSymbol roomSymbol)
+    public override void MoveToRoom(RoomSymbol roomSymbol)
     {
         CurrentRoomSymbol = roomSymbol;
     }

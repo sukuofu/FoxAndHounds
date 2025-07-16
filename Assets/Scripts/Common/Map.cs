@@ -10,10 +10,10 @@ public class Map : MonoBehaviour
     public List<Room> CurrentRooms { get; private set; }
 
     [SerializeField]
-    public Room.RoomSymbol StartRoomSymbol;
+    public RoomSymbol StartRoomSymbol;
 
     [SerializeField]
-    public Room.RoomSymbol EndRoomSymbol;
+    public RoomSymbol EndRoomSymbol;
 
     void Awake()
     {
