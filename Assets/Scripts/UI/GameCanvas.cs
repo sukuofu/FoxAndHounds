@@ -15,7 +15,8 @@ public class GameCanvas : MonoBehaviour
     RectTransform yourTurnPanel;
     [SerializeField]
     RectTransform enemyTurnPanel;
-
+    [SerializeField]
+    Map currentMap;
     public Player player { private get; set; }
 
     public void ShowDialog()
@@ -43,5 +44,10 @@ public class GameCanvas : MonoBehaviour
     public void SendPlayerToMoveRoom(RoomSymbol roomSymbol)
     {
         player.SetCurrentAction(() => player.MoveToRoom(roomSymbol));
+    }
+
+    public void GetAngles(RoomSymbol roomSymbol)
+    {
+        currentMap.GetMoveAnglesToMovableRooms(roomSymbol);
     }
 }

@@ -684,6 +684,7 @@ MonoBehaviour:
   arrowPrefabs: {fileID: 3095031267752821799}
   yourTurnPanel: {fileID: 7514617825739951194}
   enemyTurnPanel: {fileID: 2118561786102300779}
+  currentMap: {fileID: 1266828064748178717}
 --- !u!1 &1427662765159716977
 GameObject:
   m_ObjectHideFlags: 0

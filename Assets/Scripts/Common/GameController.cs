@@ -37,6 +37,9 @@ public class GameController : MonoBehaviour
         yield return GenetateGameCanvas();
         yield return LoadStage();
         //yield return GenetateEnemies();
+
+        CurrentGameCanvas.GetAngles(RoomSymbol.D);
+
         while (!CurrentPlayer.IsDead)
         {
             yield return CurrentGameCanvas.ShowYourTurn();
@@ -83,18 +86,15 @@ public class GameController : MonoBehaviour
 
     IEnumerator GenetatePlayer()
     {
-        var player = Resources.Load("Prefabs/Player") as GameObject;
-        var playerInstance = Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        var playerInstance = Util.InstantiateObjectByName("Player");
         CurrentPlayer = playerInstance.GetComponent<Player>();
-
         CurrentPlayer.Initialize(5, RoomSymbol.D); // デバッグ用
         yield return null;
     }
 
     IEnumerator GenetateGameCanvas()
     {
-        var gameCanvas = Resources.Load("Prefabs/GameCanvas") as GameObject;
-        var gameCanvasInsetance = Instantiate(gameCanvas, new Vector3(0, 0, 0), Quaternion.identity);
+        var gameCanvasInsetance = Util.InstantiateObjectByName("GameCanvas");
         CurrentGameCanvas = gameCanvasInsetance.GetComponent<GameCanvas>();
         CurrentGameCanvas.player = CurrentPlayer;
         yield return null;
