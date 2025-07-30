@@ -43,5 +43,6 @@ public class Player : GameUnit
     public override void MoveToRoom(RoomSymbol roomSymbol)
     {
         CurrentRoomSymbol = roomSymbol;
+        Debug.Log(roomSymbol.ToString());
     }
 }

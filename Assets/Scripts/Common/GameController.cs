@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
         yield return LoadStage();
         //yield return GenetateEnemies();
 
-        CurrentGameCanvas.GetAngles(RoomSymbol.D);
+        CurrentGameCanvas.GenerateMoveArrows(RoomSymbol.D);
 
         while (!CurrentPlayer.IsDead)
         {
@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void RoomChange()
     {
-        Debug.Log("部屋変わったよ");
+
     }
 
     public void GameOver()

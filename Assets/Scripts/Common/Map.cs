@@ -33,13 +33,13 @@ public class Map : MonoBehaviour
     /// </summary>
     /// <param name="map"></param>
     /// <returns></returns>
-    public List<float> GetMoveAnglesToMovableRooms(RoomSymbol roomSymbol)
+    public Dictionary<string, float> GetMoveAnglesToMovableRooms(RoomSymbol roomSymbol)
     {
-        var result = new List<float>();
+        var result = new Dictionary<string, float>();
         var myName = roomSymbol.ToString();
         var rooms = new List<GameObject>();
 
-        var movableRooms = Room.GetMovableRoomsByMyRoom(roomSymbol, new Player());
+        var movableRooms = Room.GetMovableRoomsByMyRoom(roomSymbol, isPlayer: true);
 
         for (var i = 0; i < transform.GetChild(0).childCount; i++)
         {
@@ -58,7 +58,14 @@ public class Map : MonoBehaviour
         foreach (var room in rooms)
         {
             if (room.name == originRoom.name) continue;
-            result.Add(GetAngle(originRoom.transform.position, room.transform.position));
+
+            foreach (var movableRoom in movableRooms)
+            {
+                if (room.name == movableRoom.ToString())
+                {
+                    result[movableRoom.ToString()] = GetAngle(originRoom.transform.position, room.transform.position);
+                }
+            }
         }
         foreach (var angle in result)
         {

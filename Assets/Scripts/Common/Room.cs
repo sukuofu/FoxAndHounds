@@ -23,17 +23,21 @@ public class Room : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 自分の部屋から移動可能な部屋を取得
-    /// </summary>
-    /// <param name="myRoom"></param>
-    /// <param name="gameUnit"></param>
-    /// <returns></returns>
     public static List<RoomSymbol> GetMovableRoomsByMyRoom(RoomSymbol myRoom, GameUnit gameUnit)
     {
+        return GetMovableRoomsByMyRoom(myRoom, gameUnit is Player);
+    }
+
+    /// <summary>
+    /// 自分の部屋から移動可能な部屋を取得
+    /// プレイヤーかどうかで、右に進めるか判断
+    /// </summary>
+    /// <param name="myRoom"></param>
+    /// <param name="isPlayer"></param>
+    /// <returns></returns>
+    public static List<RoomSymbol> GetMovableRoomsByMyRoom(RoomSymbol myRoom, bool isPlayer)
+    {
         var result = new List<RoomSymbol>();
-        // プレイヤーかどうかで、右に進めるか判断
-        var isPlayer = gameUnit is Player;
         // Dをスタート地点、Hをゴールとする
         switch (myRoom)
         {
