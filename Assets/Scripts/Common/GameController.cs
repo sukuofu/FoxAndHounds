@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
 
     public int EnemyActionCount { get; private set; } = 1;
 
-    private int turnCount { get; set; } = 0;
+    private int turnCount { get; set; } = 1;
 
     private Coroutine currentGameFlow;
 
@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
         //yield return GenetateEnemies();
         while (!CurrentPlayer.IsDead)
         {
+            CurrentGameCanvas.SetTurnCount(turnCount.ToString());
             yield return CurrentGameCanvas.ShowYourTurn();
             CurrentGameCanvas.GenerateMoveArrows(CurrentPlayer.CurrentRoomSymbol);
             var preRoom = CurrentPlayer.CurrentRoomSymbol;

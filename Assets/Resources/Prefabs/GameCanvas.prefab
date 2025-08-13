@@ -685,6 +685,7 @@ MonoBehaviour:
   yourTurnPanel: {fileID: 7514617825739951194}
   enemyTurnPanel: {fileID: 2118561786102300779}
   currentMap: {fileID: 1266828064748178717}
+  turnCount: {fileID: 7543296839388243330}
   moveArrowsPanel: {fileID: 4089635131425161424}
 --- !u!1 &1427662765159716977
 GameObject:
@@ -3829,7 +3830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TURN/05
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1a628e4126832e40ae3ccbaaa7452d9, type: 2}
   m_sharedMaterial: {fileID: 2601940754214151872, guid: b1a628e4126832e40ae3ccbaaa7452d9,
@@ -3857,7 +3858,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.25
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

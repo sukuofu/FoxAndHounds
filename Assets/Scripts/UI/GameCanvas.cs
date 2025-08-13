@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,8 +20,12 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     public Map currentMap;
     [SerializeField]
+    public TextMeshProUGUI turnCount;
+    [SerializeField]
     RectTransform moveArrowsPanel;
     public Player player { private get; set; }
+
+    private float?[] logAngles = new float?[4] { null, null, null, null };
 
     public void ShowDialog()
     {
@@ -33,6 +38,11 @@ public class GameCanvas : MonoBehaviour
     public void RoomChange()
     {
 
+    }
+
+    public void SetTurnCount(string count)
+    {
+        turnCount.text = $"TURN/{count.PadLeft(2, '0')}";
     }
 
     public IEnumerator ShowYourTurn()
@@ -82,8 +92,31 @@ public class GameCanvas : MonoBehaviour
             if (Enum.TryParse(angle.Key, out RoomSymbol parsedSymbol))
             {
                 Action action = () => player.MoveToRoom(parsedSymbol, currentMap);
-                arrowRect.GetComponent<Button>().onClick.AddListener(() => player.SetCurrentAction(action));
+                arrowRect.GetComponent<Button>().onClick.AddListener(() => { player.SetCurrentAction(action); RemenberLogAngle(angle.Value); });
             }
         }
+    }
+
+    /// <summary>
+    /// 行動ログ生成
+    /// </summary>
+    /// <param name="angle"></param>
+    private void RemenberLogAngle(float angle)
+    {
+        return;
+
+        moveArrowsPanel.DestroyChildren();
+
+        // ラジアンに変換（Unityの座標系は時計回り、0°が右）
+        float rad = angle * Mathf.Deg2Rad;
+
+        // 矢印生成と配置
+        GameObject arrow = Instantiate(arrowPrefabs, moveArrowsPanel);
+        RectTransform arrowRect = arrow.GetComponent<RectTransform>();
+
+        // 回転（Z軸まわりにangle度回転）
+        arrowRect.localRotation = Quaternion.Euler(0, 0, angle);
+
+        arrowRect.gameObject.SetActive(true);
     }
 }
