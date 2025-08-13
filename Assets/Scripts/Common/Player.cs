@@ -34,15 +34,15 @@ public class Player : GameUnit
         LifePoint = lifePoint;
     }
 
-    public override void ChooseRoom(RoomSymbol roomSymbol)
+    public override void ChooseRoom(RoomSymbol roomSymbol, Map map)
     {
         CurrentRoomSymbol = roomSymbol;
-        currentAction = () => MoveToRoom(roomSymbol);
+        currentAction = () => MoveToRoom(roomSymbol, map);
     }
 
-    public override void MoveToRoom(RoomSymbol roomSymbol)
+    public override void MoveToRoom(RoomSymbol roomSymbol, Map map)
     {
         CurrentRoomSymbol = roomSymbol;
-        Debug.Log(roomSymbol.ToString());
+        map.SetRoomColorToChosen(roomSymbol);
     }
 }

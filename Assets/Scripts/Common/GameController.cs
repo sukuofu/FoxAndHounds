@@ -37,18 +37,16 @@ public class GameController : MonoBehaviour
         yield return GenetateGameCanvas();
         yield return LoadStage();
         //yield return GenetateEnemies();
-
-        CurrentGameCanvas.GenerateMoveArrows(RoomSymbol.D);
-
         while (!CurrentPlayer.IsDead)
         {
             yield return CurrentGameCanvas.ShowYourTurn();
+            CurrentGameCanvas.GenerateMoveArrows(CurrentPlayer.CurrentRoomSymbol);
             var preRoom = CurrentPlayer.CurrentRoomSymbol;
             yield return CurrentPlayer.DoAction();
             // 部屋移動していたら
             if (preRoom != CurrentPlayer.CurrentRoomSymbol)
             {
-                RoomChange();
+                CurrentGameCanvas.RoomChange();
             }
 
             if (HasEnemy)
@@ -115,14 +113,6 @@ public class GameController : MonoBehaviour
             return CurrentEnemies[UnityEngine.Random.Range(0, CurrentEnemies.Count)];
         }
         return null;
-    }
-
-    /// <summary>
-    /// 部屋を移動するときの演出
-    /// </summary>
-    private void RoomChange()
-    {
-
     }
 
     public void GameOver()

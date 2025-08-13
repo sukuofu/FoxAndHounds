@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class Room : MonoBehaviour
@@ -8,6 +9,9 @@ public class Room : MonoBehaviour
 
     [HideInInspector]
     public RoomSymbol myRoomSymbol { get; private set; }
+
+    private static Color defaultColor = Color.white;
+    private static Color chosenColor = Color.green;
 
     private void Awake()
     {
@@ -68,6 +72,7 @@ public class Room : MonoBehaviour
                     {
                         result.Add(RoomSymbol.H);
                     }
+                    result.Add(RoomSymbol.G);
                     result.Add(RoomSymbol.B);
                     result.Add(RoomSymbol.F);
                     break;
@@ -160,5 +165,15 @@ public class Room : MonoBehaviour
                 }
         }
         return result;
+    }
+
+    public void SetDefaultColor()
+    {
+        GetComponent<Image>().color = defaultColor;
+    }
+
+    public void SetChosenColor()
+    {
+        GetComponent<Image>().color = chosenColor;
     }
 }

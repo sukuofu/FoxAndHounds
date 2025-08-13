@@ -18,7 +18,7 @@ public abstract class GameUnit : MonoBehaviour
 
     public abstract IEnumerator DoAction();
 
-    public abstract void ChooseRoom(RoomSymbol roomSymbol);
+    public abstract void ChooseRoom(RoomSymbol roomSymbol, Map map);
 
-    public abstract void MoveToRoom(RoomSymbol roomSymbol);
+    public abstract void MoveToRoom(RoomSymbol roomSymbol, Map map);
 }

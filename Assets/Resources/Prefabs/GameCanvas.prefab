@@ -685,6 +685,7 @@ MonoBehaviour:
   yourTurnPanel: {fileID: 7514617825739951194}
   enemyTurnPanel: {fileID: 2118561786102300779}
   currentMap: {fileID: 1266828064748178717}
+  moveArrowsPanel: {fileID: 4089635131425161424}
 --- !u!1 &1427662765159716977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,6 +2522,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5706545051375234709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4089635131425161424}
+  - component: {fileID: 4016854955246187368}
+  m_Layer: 5
+  m_Name: MoveArrowsPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4089635131425161424
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706545051375234709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5399719344558161701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4016854955246187368
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706545051375234709}
+  m_CullTransparentMesh: 1
 --- !u!1 &5867736864431024009
 GameObject:
   m_ObjectHideFlags: 0
@@ -4055,6 +4100,7 @@ RectTransform:
   - {fileID: 7350090359554896792}
   - {fileID: 3582106059463144507}
   - {fileID: 3477666746148358183}
+  - {fileID: 4089635131425161424}
   - {fileID: 3363682673433047522}
   - {fileID: 7514617825739951194}
   - {fileID: 2118561786102300779}

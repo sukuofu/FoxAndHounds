@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
+using UtageExtensions;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -16,10 +17,20 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     RectTransform enemyTurnPanel;
     [SerializeField]
-    Map currentMap;
+    public Map currentMap;
+    [SerializeField]
+    RectTransform moveArrowsPanel;
     public Player player { private get; set; }
 
     public void ShowDialog()
+    {
+
+    }
+
+    /// <summary>
+    /// 部屋を移動するときの演出
+    /// </summary>
+    public void RoomChange()
     {
 
     }
@@ -36,11 +47,6 @@ public class GameCanvas : MonoBehaviour
         yield return null;
     }
 
-    public void SendPlayerToMoveRoom(RoomSymbol roomSymbol)
-    {
-        player.SetCurrentAction(() => player.MoveToRoom(roomSymbol));
-    }
-
     public void GenerateMoveArrows(RoomSymbol roomSymbol)
     {
         var angles = currentMap.GetMoveAnglesToMovableRooms(roomSymbol);
@@ -48,6 +54,8 @@ public class GameCanvas : MonoBehaviour
         // 画面中央を取得（Canvas直下にいることを想定）
         RectTransform canvasRect = GetComponent<Canvas>().GetComponent<RectTransform>();
         Vector2 center = canvasRect.rect.center;
+
+        moveArrowsPanel.DestroyChildren();
 
         // 矢印を配置する半径（UIサイズに応じて調整）
         float radius = 200f;
@@ -62,7 +70,7 @@ public class GameCanvas : MonoBehaviour
             Vector2 position = center + offset;
 
             // 矢印生成と配置
-            GameObject arrow = Instantiate(arrowPrefabs, canvasRect);
+            GameObject arrow = Instantiate(arrowPrefabs, moveArrowsPanel);
             RectTransform arrowRect = arrow.GetComponent<RectTransform>();
             arrowRect.anchoredPosition = position;
 
@@ -73,7 +81,8 @@ public class GameCanvas : MonoBehaviour
 
             if (Enum.TryParse(angle.Key, out RoomSymbol parsedSymbol))
             {
-                arrowRect.GetComponent<Button>().onClick.AddListener(() => player.MoveToRoom(parsedSymbol));
+                Action action = () => player.MoveToRoom(parsedSymbol, currentMap);
+                arrowRect.GetComponent<Button>().onClick.AddListener(() => player.SetCurrentAction(action));
             }
         }
     }

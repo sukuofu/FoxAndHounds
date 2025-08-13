@@ -67,10 +67,6 @@ public class Map : MonoBehaviour
                 }
             }
         }
-        foreach (var angle in result)
-        {
-            Debug.Log(angle);
-        }
         return result;
     }
 
@@ -80,5 +76,20 @@ public class Map : MonoBehaviour
         float rad = Mathf.Atan2(dt.y, dt.x);
         float degree = rad * Mathf.Rad2Deg;
         return degree;
+    }
+
+    public void SetRoomColorToChosen(RoomSymbol roomSymbol)
+    {
+        foreach (var room in CurrentRooms)
+        {
+            if (room.gameObject.name == roomSymbol.ToString())
+            {
+                room.SetChosenColor();
+            }
+            else
+            {
+                room.SetDefaultColor();
+            }
+        }
     }
 }
