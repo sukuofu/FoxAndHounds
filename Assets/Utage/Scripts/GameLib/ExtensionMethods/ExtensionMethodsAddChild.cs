@@ -7,9 +7,9 @@ using Utage;
 
 namespace UtageExtensions
 {
-    //子オブジェクトを追加する拡張メソッド
-    public static class UtageExtensionMethodsPrefab
-    {
+	//子オブジェクトを追加する拡張メソッド
+	public static class UtageExtensionMethodsPrefab
+	{
 		/// <summary>
 		/// 子の追加
 		/// </summary>
@@ -234,7 +234,7 @@ namespace UtageExtensions
 		/// </summary>
 		/// <typeparam name="T">コンポーネントの型</typeparam>
 		/// <param name="count">子の数</param>
-		public static void InitCloneChildren<T>(this Transform t, int count, Action<T,int> callback) where T : Component
+		public static void InitCloneChildren<T>(this Transform t, int count, Action<T, int> callback) where T : Component
 		{
 			t.InitCloneChildren<T>(count);
 
@@ -258,10 +258,10 @@ namespace UtageExtensions
 		/// </summary>
 		/// <typeparam name="T">コンポーネントの型</typeparam>
 		/// <param name="count">子の数</param>
-		public static void InitCloneChildren<TComponent,TList>(this Transform t, List<TList> list, Action<TComponent, TList> callback) where TComponent : Component
+		public static void InitCloneChildren<TComponent, TList>(this Transform t, List<TList> list, Action<TComponent, TList> callback) where TComponent : Component
 		{
 			t.InitCloneChildren<TComponent>(
-				Mathf.Max( list.Count,1),
+				Mathf.Max(list.Count, 1),
 				(item, index) =>
 				{
 					if (index < list.Count)
@@ -279,62 +279,62 @@ namespace UtageExtensions
 
 
 
-        //指定のTransform以下の全ての子要素を別のTransform以下に移動する
-        public static void MoveAllChildren(this Transform source, Transform destination)
-        {
-	        int childCount = source.childCount;
-	        for (int i = childCount - 1; i >= 0; i--)
-	        {
-		        Transform child = source.GetChild(i);
-		        child.SetParent(destination, true);
-	        }
-        }
+		//指定のTransform以下の全ての子要素を別のTransform以下に移動する
+		public static void MoveAllChildren(this Transform source, Transform destination)
+		{
+			int childCount = source.childCount;
+			for (int i = childCount - 1; i >= 0; i--)
+			{
+				Transform child = source.GetChild(i);
+				child.SetParent(destination, true);
+			}
+		}
 
-        /// <summary>
-        /// 子要素の全削除
-        /// </summary>
-        public static void DestroyChildren(this Transform t)
-        {
-	        List<Transform> list = new List<Transform>();
-	        foreach (Transform child in t)
-	        {
-		        child.gameObject.SetActive(false);
-		        list.Add(child);
-	        }
+		/// <summary>
+		/// 子要素の全削除
+		/// </summary>
+		public static void DestroyChildren(this Transform t)
+		{
+			List<Transform> list = new List<Transform>();
+			foreach (Transform child in t)
+			{
+				child.gameObject.SetActive(false);
+				list.Add(child);
+			}
 
-	        t.DetachChildren();
-	        foreach (Transform child in list)
-	        {
-		        GameObject.Destroy(child.gameObject);
-	        }
-        }
+			t.DetachChildren();
+			foreach (Transform child in list)
+			{
+				GameObject.Destroy(child.gameObject);
+			}
+		}
 
-        /// <summary>
-        /// 子要素の全削除(エディタ上ではDestroyImmediateを使う)
-        /// </summary>
-        /// <param name="parent">親要素</param>
-        public static void DestroyChildrenInEditorOrPlayer(this Transform t)
-        {
-	        List<Transform> list = new List<Transform>();
-	        foreach (Transform child in t)
-	        {
-		        child.gameObject.SetActive(false);
-		        list.Add(child);
-	        }
+		/// <summary>
+		/// 子要素の全削除(エディタ上ではDestroyImmediateを使う)
+		/// </summary>
+		/// <param name="parent">親要素</param>
+		public static void DestroyChildrenInEditorOrPlayer(this Transform t)
+		{
+			List<Transform> list = new List<Transform>();
+			foreach (Transform child in t)
+			{
+				child.gameObject.SetActive(false);
+				list.Add(child);
+			}
 
-	        t.DetachChildren();
-	        foreach (Transform child in list)
-	        {
-		        if (Application.isPlaying)
-		        {
-			        GameObject.Destroy(child.gameObject);
-		        }
-		        else
-		        {
-			        GameObject.DestroyImmediate(child.gameObject);
-		        }
-	        }
-        }
+			t.DetachChildren();
+			foreach (Transform child in list)
+			{
+				if (Application.isPlaying)
+				{
+					GameObject.Destroy(child.gameObject);
+				}
+				else
+				{
+					GameObject.DestroyImmediate(child.gameObject);
+				}
+			}
+		}
 
-    }
+	}
 }

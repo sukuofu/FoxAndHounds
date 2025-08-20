@@ -12,6 +12,8 @@ public class GameCanvas : MonoBehaviour
 {
     [SerializeField]
     GameObject arrowPrefabs;
+    [SerializeField]
+    GameObject logArrowPrefabs;
 
     [SerializeField]
     RectTransform yourTurnPanel;
@@ -23,9 +25,11 @@ public class GameCanvas : MonoBehaviour
     public TextMeshProUGUI turnCount;
     [SerializeField]
     RectTransform moveArrowsPanel;
+    [SerializeField]
+    RectTransform movelogsPanel;
     public Player player { private get; set; }
-
-    private float?[] logAngles = new float?[4] { null, null, null, null };
+    private const int LogAngleArrowsLength = 4;
+    private float?[] logAngles = new float?[LogAngleArrowsLength] { null, null, null, null };
 
     public void ShowDialog()
     {
@@ -92,7 +96,11 @@ public class GameCanvas : MonoBehaviour
             if (Enum.TryParse(angle.Key, out RoomSymbol parsedSymbol))
             {
                 Action action = () => player.MoveToRoom(parsedSymbol, currentMap);
-                arrowRect.GetComponent<Button>().onClick.AddListener(() => { player.SetCurrentAction(action); RemenberLogAngle(angle.Value); });
+                arrowRect.GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    player.SetCurrentAction(action);
+                    RemenberLogAngle(angle.Value);
+                });
             }
         }
     }
@@ -103,16 +111,19 @@ public class GameCanvas : MonoBehaviour
     /// <param name="angle"></param>
     private void RemenberLogAngle(float angle)
     {
-        return;
-
-        moveArrowsPanel.DestroyChildren();
+        if (LogAngleArrowsLength <= movelogsPanel.transform.childCount)
+        {
+            GameObject.Destroy(movelogsPanel.GetChild(LogAngleArrowsLength - 1).gameObject);
+        }
 
         // ラジアンに変換（Unityの座標系は時計回り、0°が右）
         float rad = angle * Mathf.Deg2Rad;
 
         // 矢印生成と配置
-        GameObject arrow = Instantiate(arrowPrefabs, moveArrowsPanel);
+        GameObject arrow = Instantiate(logArrowPrefabs, movelogsPanel);
         RectTransform arrowRect = arrow.GetComponent<RectTransform>();
+        arrow.transform.SetSiblingIndex(0);
+
 
         // 回転（Z軸まわりにangle度回転）
         arrowRect.localRotation = Quaternion.Euler(0, 0, angle);
