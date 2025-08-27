@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
             // 部屋移動していたら
             if (preRoom != CurrentPlayer.CurrentRoomSymbol)
             {
+                Debug.Log("?");
                 CurrentGameCanvas.RoomChange();
             }
 

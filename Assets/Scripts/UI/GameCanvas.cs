@@ -27,6 +27,8 @@ public class GameCanvas : MonoBehaviour
     RectTransform moveArrowsPanel;
     [SerializeField]
     RectTransform movelogsPanel;
+    [SerializeField]
+    RectTransform roomChangePanel;
     public Player player { private get; set; }
     private const int LogAngleArrowsLength = 4;
     private float?[] logAngles = new float?[LogAngleArrowsLength] { null, null, null, null };
@@ -39,9 +41,11 @@ public class GameCanvas : MonoBehaviour
     /// <summary>
     /// 部屋を移動するときの演出
     /// </summary>
-    public void RoomChange()
+    public IEnumerator RoomChange()
     {
-
+        roomChangePanel.transform.gameObject.SetActive(true);
+        yield return new WaitUntil(() => !roomChangePanel.gameObject.activeInHierarchy);
+        yield return new WaitForEndOfFrame();
     }
 
     public void SetTurnCount(string count)
