@@ -113,7 +113,7 @@ public class GameCanvas : MonoBehaviour
     {
         if (LogAngleArrowsLength <= movelogsPanel.transform.childCount)
         {
-            GameObject.Destroy(movelogsPanel.GetChild(LogAngleArrowsLength - 1).gameObject);
+            GameObject.Destroy(movelogsPanel.GetChild(0).gameObject);
         }
 
         // ラジアンに変換（Unityの座標系は時計回り、0°が右）
@@ -122,7 +122,7 @@ public class GameCanvas : MonoBehaviour
         // 矢印生成と配置
         GameObject arrow = Instantiate(logArrowPrefabs, movelogsPanel);
         RectTransform arrowRect = arrow.GetComponent<RectTransform>();
-        arrow.transform.SetSiblingIndex(0);
+        arrow.transform.SetSiblingIndex(movelogsPanel.childCount - 1);
 
 
         // 回転（Z軸まわりにangle度回転）
