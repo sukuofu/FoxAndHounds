@@ -32,6 +32,8 @@ public class GameCanvas : MonoBehaviour
     public Player player { private get; set; }
     private const int LogAngleArrowsLength = 4;
     private float?[] logAngles = new float?[LogAngleArrowsLength] { null, null, null, null };
+    private float? preLogAngle = null;
+
 
     public void ShowDialog()
     {
@@ -44,8 +46,10 @@ public class GameCanvas : MonoBehaviour
     public IEnumerator RoomChange()
     {
         roomChangePanel.transform.gameObject.SetActive(true);
-        yield return new WaitUntil(() => !roomChangePanel.gameObject.activeInHierarchy);
-        yield return new WaitForEndOfFrame();
+        // yield return new WaitForEndOfFrame();
+        var animator_clipinfo1 = roomChangePanel.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);//現在のアニメーションクリップの情報を取得 引数0はレイヤーの番号
+        float state_time01 = animator_clipinfo1[0].clip.length * 0.5f;
+        yield return new WaitForSeconds(state_time01);
     }
 
     public void SetTurnCount(string count)
@@ -99,7 +103,7 @@ public class GameCanvas : MonoBehaviour
 
             if (Enum.TryParse(angle.Key, out RoomSymbol parsedSymbol))
             {
-                Action action = () => player.MoveToRoom(parsedSymbol, currentMap);
+                Action action = () => player.MoveToRoom(parsedSymbol);
                 arrowRect.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     player.SetCurrentAction(action);
@@ -109,12 +113,29 @@ public class GameCanvas : MonoBehaviour
         }
     }
 
+    public void SetMapRoomColor(RoomSymbol roomSymbol)
+    {
+        currentMap.SetRoomColorToChosen(roomSymbol);
+    }
+
+    private void RemenberLogAngle(float angle)
+    {
+        preLogAngle = angle;
+    }
+
     /// <summary>
     /// 行動ログ生成
     /// </summary>
     /// <param name="angle"></param>
-    private void RemenberLogAngle(float angle)
+    public void GenerateLogAngle()
     {
+        if (preLogAngle == null)
+        {
+            return;
+        }
+
+        var angle = (float)preLogAngle;
+
         if (LogAngleArrowsLength <= movelogsPanel.transform.childCount)
         {
             GameObject.Destroy(movelogsPanel.GetChild(0).gameObject);

@@ -39,6 +39,8 @@ public class GameController : MonoBehaviour
         //yield return GenetateEnemies();
         while (!CurrentPlayer.IsDead)
         {
+            CurrentGameCanvas.GenerateLogAngle();
+            CurrentGameCanvas.SetMapRoomColor(CurrentPlayer.CurrentRoomSymbol);
             CurrentGameCanvas.SetTurnCount(turnCount.ToString());
             yield return CurrentGameCanvas.ShowYourTurn();
             CurrentGameCanvas.GenerateMoveArrows(CurrentPlayer.CurrentRoomSymbol);
@@ -47,8 +49,7 @@ public class GameController : MonoBehaviour
             // 部屋移動していたら
             if (preRoom != CurrentPlayer.CurrentRoomSymbol)
             {
-                Debug.Log("?");
-                CurrentGameCanvas.RoomChange();
+                yield return CurrentGameCanvas.RoomChange();
             }
 
             if (HasEnemy)
