@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using Utage;
 
 public class GameController : MonoBehaviour
 {
@@ -13,7 +16,7 @@ public class GameController : MonoBehaviour
     public GameCanvas CurrentGameCanvas { get; private set; }
 
     [HideInInspector]
-    public List<Enemy> CurrentEnemies { get; private set; }
+    public List<Enemy> CurrentEnemies { get; private set; } = new List<Enemy>();
 
     [HideInInspector]
     public int CurrentStageIndex { get; set; } = 0;
@@ -26,6 +29,8 @@ public class GameController : MonoBehaviour
 
     private Coroutine currentGameFlow;
 
+    private static System.Random random = new System.Random();
+
     void Start()
     {
         currentGameFlow = StartCoroutine(GameFlow());
@@ -33,10 +38,14 @@ public class GameController : MonoBehaviour
 
     IEnumerator GameFlow()
     {
-        yield return GenetatePlayer();
-        yield return GenetateGameCanvas();
         yield return LoadStage();
-        //yield return GenetateEnemies();
+        // TODO: map固定でなく、ステージに応じたmapを生成する
+        yield return GenetateGameCanvas();
+        var map = CurrentGameCanvas.CurrentMap;
+        yield return GenetatePlayer(map);
+        CurrentGameCanvas.player = CurrentPlayer;
+        yield return GenetateEnemies(map);
+
         while (!CurrentPlayer.IsDead)
         {
             CurrentGameCanvas.GenerateLogAngle();
@@ -85,11 +94,11 @@ public class GameController : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator GenetatePlayer()
+    IEnumerator GenetatePlayer(Map map)
     {
         var playerInstance = Util.InstantiateObjectByName("Player");
         CurrentPlayer = playerInstance.GetComponent<Player>();
-        CurrentPlayer.Initialize(5, RoomSymbol.D); // デバッグ用
+        CurrentPlayer.Initialize(5, map.StartRoomSymbol); // デバッグ用
         yield return null;
     }
 
@@ -97,15 +106,37 @@ public class GameController : MonoBehaviour
     {
         var gameCanvasInsetance = Util.InstantiateObjectByName("GameCanvas");
         CurrentGameCanvas = gameCanvasInsetance.GetComponent<GameCanvas>();
-        CurrentGameCanvas.player = CurrentPlayer;
         yield return null;
     }
 
-    IEnumerator GenetateEnemies()
+    void GenetateEnemy(RoomSymbol roomSymbol)
     {
-        var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        CurrentEnemies = enemies != null ? enemies.ToList() : null;
+        var enemyInstance = Util.InstantiateObjectByName("Enemy");
+        CurrentEnemies.Add(enemyInstance.GetComponent<Enemy>());
+    }
 
+    IEnumerator GenetateEnemies(Map map)
+    {
+        var count = map.EnemyCount;
+        var enemyRoomSymbols = new List<RoomSymbol>(map.EnemyRoomSymbols);
+
+        for (int i = 0; i < count; i++)
+        {
+            // ランダムなインデックスを取得
+            int index = random.Next(enemyRoomSymbols.Count);
+
+            // ランダムに選ばれた要素を取得
+            var selected = enemyRoomSymbols[index];
+
+            // リストから削除
+            enemyRoomSymbols.RemoveAt(index);
+            GenetateEnemy(selected);
+
+            if (enemyRoomSymbols.Count == 0)
+            {
+                break;
+            }
+        }
         yield return null;
     }
 

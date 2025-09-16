@@ -15,6 +15,12 @@ public class Map : MonoBehaviour
     [SerializeField]
     public RoomSymbol EndRoomSymbol;
 
+    [SerializeField]
+    public List<RoomSymbol> EnemyRoomSymbols = new List<RoomSymbol>();
+
+    [SerializeField]
+    public int EnemyCount = 0;
+
     void Awake()
     {
         GetRooms();

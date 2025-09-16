@@ -20,7 +20,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField]
     RectTransform enemyTurnPanel;
     [SerializeField]
-    public Map currentMap;
+    public Map CurrentMap;
     [SerializeField]
     public TextMeshProUGUI turnCount;
     [SerializeField]
@@ -71,7 +71,7 @@ public class GameCanvas : MonoBehaviour
 
     public void GenerateMoveArrows(RoomSymbol roomSymbol)
     {
-        var angles = currentMap.GetMoveAnglesToMovableRooms(roomSymbol);
+        var angles = CurrentMap.GetMoveAnglesToMovableRooms(roomSymbol);
 
         // 画面中央を取得（Canvas直下にいることを想定）
         RectTransform canvasRect = GetComponent<Canvas>().GetComponent<RectTransform>();
@@ -115,7 +115,7 @@ public class GameCanvas : MonoBehaviour
 
     public void SetMapRoomColor(RoomSymbol roomSymbol)
     {
-        currentMap.SetRoomColorToChosen(roomSymbol);
+        CurrentMap.SetRoomColorToChosen(roomSymbol);
     }
 
     private void RemenberLogAngle(float angle)

@@ -58,8 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d8bf223e6174543b09ecc701086c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartRoomSymbol: 3
-  EndRoomSymbol: 7
+  StartRoomSymbol: 7
+  EndRoomSymbol: 3
+  EnemyRoomSymbols: 000000000300000008000000
+  EnemyCount: 3
 --- !u!1 &369954417377990574
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +537,7 @@ MonoBehaviour:
   logArrowPrefabs: {fileID: 1719015577901052430}
   yourTurnPanel: {fileID: 7514617825739951194}
   enemyTurnPanel: {fileID: 2118561786102300779}
-  currentMap: {fileID: 1266828064748178717}
+  CurrentMap: {fileID: 1266828064748178717}
   turnCount: {fileID: 7543296839388243330}
   moveArrowsPanel: {fileID: 4089635131425161424}
   movelogsPanel: {fileID: 1169736033338994798}
